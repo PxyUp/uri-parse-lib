@@ -2,7 +2,7 @@
 
 Small library for parse URI(URL)
 
-[![N|Solid](https://pp.vk.me/c637816/v637816997/3320a/nvaUMQhIbkc.jpg)](https://www.npmjs.com/package/uri-parse-lib)
+[Author Profile](https://ru.linkedin.com/in/yura-panarin-b17853105)
 
 # Install
 
@@ -32,7 +32,7 @@ Small library for parse URI(URL)
                     query:"1"
                     sed:"5"
                 }
-                user:"user"
+                user: "user"
             */
          </script>
     
@@ -55,6 +55,6 @@ Small library for parse URI(URL)
                 query:"1"
                 sed:"5"
             }
-            user:"user"
+            user: "user"
        */
     

@@ -1,6 +1,6 @@
 /**
  * uri-parse-lib - Small library for parsing URL.
- * @version v2.0.4
+ * @version v2.0.5
  * @link https://github.com/PxyUp/uri-parse-lib
  * @license MIT
  */
