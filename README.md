@@ -17,7 +17,7 @@ Small library for parse URI(URL)
              <script language="javascript" src="uri-parse-lib.js"></script>
          </head>
          <script>
-            var t = parseURI("http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor");
+            var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor");
             /*
                 full: "http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor"
                 hash: "anchor"
@@ -39,8 +39,8 @@ Small library for parse URI(URL)
  
  In NodeJS 
     
-       var parseURI = require("uri-parse-lib");
-       var t = parseURI("http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor");
+       var parserURI = require("uri-parse-lib");
+       var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor");
        /*
             full: "http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor"
             hash: "anchor"
