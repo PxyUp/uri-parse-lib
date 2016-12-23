@@ -1,12 +1,14 @@
 /**
  * uri-parse-lib - Small library for parsing URL.
- * @version v2.0.6
+ * @version v2.0.7
  * @link https://github.com/PxyUp/uri-parse-lib
  * @license MIT
  */
 (function () {
 
     var root = this;
+
+    var badCharater = [":", "@", "://"];
 
     var parserURI = function (url) {
         var firstSplit, lastSplit, parsing, urlObject;
@@ -18,7 +20,8 @@
             protocol: "",
             user: "",
             password: "",
-            full: url
+            href: url,
+            hash: ""
         };
         firstSplit = function (str, splitter) {
             var array;
@@ -36,14 +39,28 @@
             }
             return ["", str];
         };
+        checkerBadCharater = function (str) {
+            for (var index = 0; index < badCharater.length; index++) {
+                if (str.indexOf(badCharater[index]) != -1) {
+                    return false;
+                }
+            }
+            return true;
+        };
         parsing = function (uri, splitter, flag) {
             if (flag == null) {
                 flag = false;
             }
             switch (splitter) {
                 case "#":
-                    urlObject.hash = lastSplit(uri, splitter)[0];
-                    parsing(lastSplit(uri, splitter)[1], "@");
+                    if ((uri.lastIndexOf("#" + lastSplit(uri, splitter)[0]) == uri.length - lastSplit(uri, splitter)[0].length - splitter.length) && (checkerBadCharater(lastSplit(uri, splitter)[0]) == true)) {
+                        urlObject.hash = lastSplit(uri, splitter)[0];
+                        parsing(lastSplit(uri, splitter)[1], "@");
+                    } else {
+                        urlObject.hash = false;
+                        parsing(lastSplit(uri, splitter)[1], "@");
+                    }
+
                     break;
                 case "?":
                     urlObject.query = {};
