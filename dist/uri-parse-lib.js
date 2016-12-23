@@ -1,6 +1,6 @@
 /**
  * uri-parse-lib - Small library for parsing URL.
- * @version v2.0.7
+ * @version v2.0.8
  * @link https://github.com/PxyUp/uri-parse-lib
  * @license MIT
  */
@@ -58,7 +58,7 @@
                         parsing(lastSplit(uri, splitter)[1], "@");
                     } else {
                         urlObject.hash = false;
-                        parsing(lastSplit(uri, splitter)[1], "@");
+                        parsing(uri, "@");
                     }
 
                     break;

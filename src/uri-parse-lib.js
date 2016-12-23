@@ -52,7 +52,7 @@
                         parsing(lastSplit(uri, splitter)[1], "@");
                     } else {
                         urlObject.hash = false;
-                        parsing(lastSplit(uri, splitter)[1], "@");
+                        parsing(uri, "@");
                     }
 
                     break;
