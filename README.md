@@ -2,7 +2,7 @@
 
 Small library for parse URI(URL)
 
-[Author Profile](https://ru.linkedin.com/in/yura-panarin-b17853105)
+[![NPM](https://nodei.co/npm/uri-parse-lib.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/uri-parse-lib/)
 
 # Install
 
@@ -28,9 +28,9 @@ Small library for parse URI(URL)
                 port: "8080"
                 protocol: "http"
                 query: {
-                    next:"4"
-                    query:"1"
-                    sed:"5"
+                    next: "4"
+                    query: "1"
+                    sed: "5"
                 }
                 user: "user"
             */
@@ -51,9 +51,9 @@ Small library for parse URI(URL)
             port: "8080"
             protocol: "http"
             query: {
-                next:"4"
-                query:"1"
-                sed:"5"
+                next: "4"
+                query: "1"
+                sed: "5"
             }
             user: "user"
        */
