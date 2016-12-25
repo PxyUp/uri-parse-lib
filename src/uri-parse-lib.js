@@ -17,7 +17,7 @@
             href: url,
             hash: ""
         };
-        protoArray = ["http", "https", "ftp", "ssh", "irc"];
+        protoArray = ["http", "https", "ftp", "ssh", "irc", "sftp"];
         firstSplit = function (str, splitter) {
             var array;
             if (str.indexOf(splitter) !== -1) {
