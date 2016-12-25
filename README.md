@@ -35,8 +35,9 @@ Small library for parse URI(URL)
                 user: "user"
             */
          </script>
+         
+    // param == null -> incorrect       
     
- 
  In NodeJS 
     
        var parserURI = require("uri-parse-lib");
@@ -58,3 +59,6 @@ Small library for parse URI(URL)
             user: "user"
        */
     
+    // param == null -> incorrect 
+    
+   
