@@ -1,6 +1,6 @@
 /**
  * uri-parse-lib - Small library for parsing URL.
- * @version v2.0.9
+ * @version v2.0.10
  * @link https://github.com/PxyUp/uri-parse-lib
  * @license MIT
  */
@@ -23,7 +23,7 @@
             href: url,
             hash: ""
         };
-        protoArray = ["http", "https", "ftp", "ssh", "irc"];
+        protoArray = ["http", "https", "ftp", "ssh", "irc", "sftp"];
         firstSplit = function (str, splitter) {
             var array;
             if (str.indexOf(splitter) !== -1) {
