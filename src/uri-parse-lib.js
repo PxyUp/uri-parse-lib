@@ -5,7 +5,7 @@
     var badCharater = [":", "@", "://"];
 
     var parserURI = function (url) {
-        var firstSplit, lastSplit, parsing, urlObject;
+        var firstSplit, lastSplit, parsing, urlObject, checkerBadCharater, protoArray;
         urlObject = {
             host: "",
             port: "",
@@ -17,6 +17,7 @@
             href: url,
             hash: ""
         };
+        protoArray = ["http", "https", "ftp", "ssh", "irc"];
         firstSplit = function (str, splitter) {
             var array;
             if (str.indexOf(splitter) !== -1) {
@@ -51,10 +52,9 @@
                         urlObject.hash = lastSplit(uri, splitter)[0];
                         parsing(lastSplit(uri, splitter)[1], "@");
                     } else {
-                        urlObject.hash = false;
+                        urlObject.hash = null;
                         parsing(uri, "@");
                     }
-
                     break;
                 case "?":
                     urlObject.query = {};
@@ -77,7 +77,11 @@
                     }
                     break;
                 case "://":
-                    urlObject.protocol = firstSplit(uri, splitter)[0];
+                    if (protoArray.indexOf(firstSplit(uri, splitter)[0].toLowerCase()) !== -1) {
+                        urlObject.protocol = firstSplit(uri, splitter)[0];
+                    } else {
+                        urlObject.protocol = null;
+                    }
                     parsing(firstSplit(uri, splitter)[1], "#");
                     break;
                 case "@":
