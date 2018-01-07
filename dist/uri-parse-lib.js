@@ -117,6 +117,16 @@
                     break;
             }
         };
+        if ((url.indexOf("www.") == 0) || (url.indexOf("//www.") > -1)) {
+            var indexWWW = url.indexOf("//www.")
+            if (indexWWW > -1) {
+                indexWWW += 2
+            } else {
+                indexWWW = 0
+            }
+            url = url.slice(0, indexWWW) + url.slice(indexWWW + 4)
+        }
+        console.log(url)
         parsing(url, "://");
         urlObject.origin = (urlObject.protocol !== "" ? urlObject.protocol + "://" : "") + urlObject.host + (urlObject.port !== "" ? ":" + urlObject.port : "");
         return urlObject;
