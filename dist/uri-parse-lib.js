@@ -1,6 +1,6 @@
 /**
  * uri-parse-lib - Small library for parsing URL.
- * @version v2.1.2
+ * @version v2.1.3
  * @link https://github.com/PxyUp/uri-parse-lib
  * @license MIT
  */
@@ -14,10 +14,10 @@
         var firstSplit, lastSplit, parsing, urlObject, checkerBadCharater, protoArray;
         urlObject = {
             host: "",
-            port: "",
+            port: null,
             query: {},
             pathname: "",
-            protocol: "",
+            protocol: null,
             user: "",
             password: "",
             href: url,
@@ -127,7 +127,7 @@
             url = url.slice(0, indexWWW) + url.slice(indexWWW + 4)
         }
         parsing(url, "://");
-        urlObject.origin = (urlObject.protocol !== "" ? urlObject.protocol + "://" : "") + urlObject.host + (urlObject.port !== "" ? ":" + urlObject.port : "");
+        urlObject.origin = (urlObject.protocol ? urlObject.protocol + "://" : "") + urlObject.host + (urlObject.port ? ":" + urlObject.port : "");
         return urlObject;
     };
 
