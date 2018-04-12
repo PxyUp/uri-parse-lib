@@ -5,6 +5,9 @@
     "Yuriy  Panarin <tduble94@gmail.com>"
   ],
   "description": "Small library for parsing URL.",
+  "scripts": {
+    "build": "webpack"
+  },
   "keywords": [
     "url",
     "uri",
@@ -25,12 +28,11 @@
   },
   "main": "dist/uri-parse-lib.min.js",
   "devDependencies": {
-    "gulp": "^3.8.10",
-    "gulp-header": "^1.2.2",
-    "gulp-jshint": "^1.9.0",
-    "gulp-load-plugins": "^0.8.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^1.1.0",
-    "karma": "^0.12.31"
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "jest": "^22.4.3",
+    "ts-loader": "^4.2.0",
+    "typescript": "^2.8.1",
+    "ts-jest": "^22.4.2"
   }
 }
