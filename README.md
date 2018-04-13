@@ -17,9 +17,8 @@ Small library for parse URI(URL)
              <script language="javascript" src="uri-parse-lib.js"></script>
          </head>
          <script>
-            var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor");
+            var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");
             /*
-                full: "http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor"
                 hash: "anchor"
                 host: "example.com"
                 origin: "http://example.com:8080"
@@ -27,10 +26,19 @@ Small library for parse URI(URL)
                 pathname: "/directory/file.ext"
                 port: "8080"
                 protocol: "http"
-                query: {
-                    next: "4"
-                    query: "1"
-                    sed: "5"
+                {
+                  query: {
+                    nan: [
+                      {
+                        nan: '1',
+                      }, {
+                        sed: '4'
+                      }, {
+                        sed: '4'
+                      }
+                    ]
+                  },
+                  sed: ['5']
                 }
                 user: "user"
             */
@@ -41,21 +49,29 @@ Small library for parse URI(URL)
  In NodeJS 
     
        var parserURI = require("uri-parse-lib");
-       var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor");
+       var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");
        /*
-            full: "http://user:pass@example.com:8080/directory/file.ext?query=1&next=4&sed=5#anchor"
             hash: "anchor"
             host: "example.com"
             origin: "http://example.com:8080"
             password: "pass"
             pathname: "/directory/file.ext"
             port: "8080"
-            protocol: "http"
-            query: {
-                next: "4"
-                query: "1"
-                sed: "5"
-            }
+            protocol: "http",
+            {
+              query: {
+                nan: [
+                  {
+                    nan: '1',
+                  }, {
+                    sed: '4'
+                  }, {
+                    sed: '4'
+                  }
+                ]
+              },
+              sed: ['5']
+            },
             user: "user"
        */
     
