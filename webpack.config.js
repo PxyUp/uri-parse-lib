@@ -4,29 +4,19 @@ module.exports = {
   entry: "./src/index.ts",
   output: {
     libraryTarget: "umd",
-    library: "uri-parse-lib",
-    filename: "./dist/uri-parse-lib.js"
+    library: "parseURI",
+    filename: "uri-parse-lib.js"
   },
-  target: "node",
-  devtool: "source-map",
   resolve: {
-    extensions: ['s', ".webpack.js", ".web.js", ".ts", ".js"],
-    modules: ["src", "node_modules"]
+    extensions: [".ts", ".js"],
   },
+  mode: "production",
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loader: "ts-loader",
-        options: {
-          transpileOnly: true
-        }
+        loader: "ts-loader"
       }
     ]
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      __VERSION__: JSON.stringify(require("./package.json").version),
-    }),
-  ]
+  }
 };

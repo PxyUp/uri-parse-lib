@@ -1,9 +1,6 @@
-interface parserResponse {
-  value: string | Object,
-  exist?: boolean
-}
+import mergeWith = require('lodash/mergeWith')
 
-export function parseHash(urlObject: URL): parserResponse {
+export function parseHash(urlObject: URL) {
   if (urlObject.hash.length) {
     return {
       value: urlObject.hash,
@@ -16,7 +13,7 @@ export function parseHash(urlObject: URL): parserResponse {
   }
 }
 
-export function parseUsername(urlObject: URL): parserResponse {
+export function parseUsername(urlObject: URL) {
   if (urlObject.username.length) {
     return {
       value: urlObject.username,
@@ -30,7 +27,7 @@ export function parseUsername(urlObject: URL): parserResponse {
 }
 
 
-export function parseUserPassword(urlObject: URL): parserResponse {
+export function parseUserPassword(urlObject: URL) {
   if (urlObject.password.length) {
     return {
       value: urlObject.password,
@@ -43,7 +40,7 @@ export function parseUserPassword(urlObject: URL): parserResponse {
   }
 }
 
-export function parseProtocol(urlObject: URL): parserResponse {
+export function parseProtocol(urlObject: URL) {
   if (urlObject.protocol.length) {
     return {
       value: urlObject.protocol.replace(':', ''),
@@ -56,20 +53,7 @@ export function parseProtocol(urlObject: URL): parserResponse {
   }
 }
 
-export function parseProtocol(urlObject: URL): parserResponse {
-  if (urlObject.origin.length) {
-    return {
-      value: urlObject.origin,
-    }
-  }
-
-  return {
-    value: null,
-    exist: false
-  }
-}
-
-export function parseHostname(urlObject: URL): parserResponse {
+export function parseHostname(urlObject: URL) {
   if (urlObject.hostname.length) {
     return {
       value: urlObject.hostname,
@@ -82,8 +66,13 @@ export function parseHostname(urlObject: URL): parserResponse {
   }
 }
 
-export function parseOrigin(urlObject: URL): parserResponse {
+export function parseOrigin(urlObject: URL, emptyProtocol = false) {
   if (urlObject.origin.length) {
+    if (emptyProtocol) {
+      return {
+        value: urlObject.origin.substring(7)
+      }
+    }
     return {
       value: urlObject.origin,
     }
@@ -95,7 +84,7 @@ export function parseOrigin(urlObject: URL): parserResponse {
   }
 }
 
-export function parsePathname(urlObject: URL): parserResponse {
+export function parsePathname(urlObject: URL) {
   if (urlObject.pathname.length) {
     return {
       value: urlObject.pathname,
@@ -108,7 +97,7 @@ export function parsePathname(urlObject: URL): parserResponse {
   }
 }
 
-export function parsePort(urlObject: URL): parserResponse {
+export function parsePort(urlObject: URL) {
   if (urlObject.port.length) {
     return {
       value: urlObject.port,
@@ -121,12 +110,12 @@ export function parsePort(urlObject: URL): parserResponse {
   }
 }
 
-export function parseSearch(urlObject: URL): parserResponse {
+export function parseSearch(urlObject: URL) {
   if (urlObject.search.length) {
     const answer = {}
     const arrayOfParam = urlObject.search.replace("?", "").split('&');
     arrayOfParam.forEach((param) => {
-      const {key, value} = param.split("=")
+      const [key, value] = param.split("=")
       buildSearchParam(answer, key, value)
     })
 
@@ -142,38 +131,68 @@ export function parseSearch(urlObject: URL): parserResponse {
   }
 }
 
-function buildSearchParam(store, param: string, value) {
-  let store = {};
+function buildSearchParam(store: Object, param: string, value: any) {
 
-  if (param.indexOf("[") === -1) {
+  if (param.indexOf('[') === -1) {
     store[param] = value
     return
   }
 
-  if (param.indexOf("[]")) {
-    let key = param.replace("[]", '')
-    if (store[key]) {
-      store[key].push(value)
-      return
-    }
-    store[key] = [value]
-  }
-
-  let keys = param.split(/\[|\]/).filter((s) => s.length > 0);
+  let keys = param.replace("[]", "[$empty$]").split(/\[|\]/).filter((s) => s.length > 0);
   let data = {}
+  let link = data
   while (keys.length) {
     let key = keys.shift()
-    if (data[key]) {
-      data = data[key]
+    if (keys.length >= 1) {
+      if (isEmptyKey(key)) {
+        throw new Error("error")
+      } else {
+        if (data[key]) {
+          data = data[key]
+        } else {
+          if (parseInt(key).toString() === key) {
+            if (data[parseInt(key)]) {
+              data = data[parseInt(key)]
+            } else {
+              data[parseInt(key)] = {}
+              data = data[parseInt(key)]
+            }
+          }
+          else {
+            if (isEmptyKey(keys[0]) || parseInt(keys[0]).toString() === keys[0]) {
+              if (!data[key]) {
+                data[key] = []
+              }
+            } else {
+              if (!data[key]) {
+                data[key] = {}
+              }
+            }
+            data = data[key]
+          }
+        }
+      }
     } else {
-      if (keys.length) {
-        data[key] = {}
-        data = data[key]
+      if (isEmptyKey(key)) {
+        if (Array.isArray(data)) {
+          data.push(value)
+        } else {
+          data = [value]
+        }
       } else {
         data[key] = value
       }
     }
   }
 
-  return Object.assign(store, data);
+  return mergeWith(store, link, (objValue, srcValue) => {
+      if (Array.isArray(objValue)) {
+        return objValue.concat(srcValue).filter(e => e !== void 0);
+      }
+    }
+  )
+}
+
+function isEmptyKey(key) {
+  return key === '$empty$' || key.length === 0
 }
