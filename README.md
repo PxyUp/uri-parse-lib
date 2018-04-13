@@ -26,8 +26,7 @@ Small library for parse URI(URL)
                 pathname: "/directory/file.ext"
                 port: "8080"
                 protocol: "http"
-                {
-                  query: {
+                query: {
                     nan: [
                       {
                         nan: '1',
@@ -58,8 +57,7 @@ Small library for parse URI(URL)
             pathname: "/directory/file.ext"
             port: "8080"
             protocol: "http",
-            {
-              query: {
+            query: {
                 nan: [
                   {
                     nan: '1',
