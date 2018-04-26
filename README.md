@@ -10,7 +10,7 @@ Small library for parse URI(URL)
     
 # Usage   
     
-    import * as parseURI from "uri-parse-lib"
+    import * as parseURI from "uri-parse-lib" //uri-parse-lib/dist/uri-parse-lib.node.js for Node
     
     window.parseURI() // alternative
     
@@ -23,8 +23,7 @@ Small library for parse URI(URL)
         pathname: "/directory/file.ext"
         port: "8080"
         protocol: "http"
-        {
-          query: {
+        query: {
             nan: [
               {
                 nan: '1',
