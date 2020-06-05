@@ -10,9 +10,7 @@ Small library for parse URI(URL)
     
 # Usage   
     
-    import * as parseURI from "uri-parse-lib" //uri-parse-lib/dist/uri-parse-lib.node.js for Node
-    
-    window.parseURI() // alternative
+    import { parseURI } from "uri-parse-lib"
     
     var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");
     /*

@@ -1,4 +1,4 @@
-import mergeWith = require('lodash/mergeWith')
+import { mergeWith } from "lodash-es"
 
 export function parseHash(urlObject: URL) {
   if (urlObject.hash.length) {

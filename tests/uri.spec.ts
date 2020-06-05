@@ -1,4 +1,4 @@
-import * as parseURI from './../src/index'
+import { parseURI } from './../src/index'
 
 describe("URI parse tesr", () => {
   it("getHash() => shoud be hash", () => {

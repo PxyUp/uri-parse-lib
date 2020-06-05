@@ -10,7 +10,7 @@ import {
   parsePort
 } from "./utils/parser";
 
-export = (string: string) => {
+export function parseURI(string: string) {
   if (string.indexOf('://') === -1) {
     let urlObject = new URL("http://" + string)
     return {

@@ -1,15 +1,20 @@
 {
   "name": "uri-parse-lib",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "authors": [
     "Yuriy  Panarin <tduble94@gmail.com>"
   ],
   "description": "Small library for parsing URL.",
   "scripts": {
-    "build": "webpack",
-    "test": "jest",
-    "prepublish": "webpack"
+    "build": "rm -rf dist && rollup -c",
+    "test": "jest"
   },
+  "main": "uri-parse-lib.umd.js",
+  "module": "uri-parse-lib.es5.js",
+  "es2015": "uri-parse-lib.es2015.js",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
+  "browser": "uri-parse-lib.web.js",
   "keywords": [
     "url",
     "uri",
@@ -28,14 +33,17 @@
     "type": "git",
     "url": "https://github.com/PxyUp/uri-parse-lib.git"
   },
-  "main": "dist/uri-parse-lib.js",
   "devDependencies": {
-    "jest": "^22.4.3",
-    "ts-jest": "^22.4.2",
-    "ts-loader": "^4.2.0",
-    "typescript": "^2.8.1",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14"
+    "@types/jest": "^25.2.3",
+    "@types/lodash-es": "^4.17.3",
+    "jest": "^26.0.0",
+    "rollup": "^2.13.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^26.0.0",
+    "typescript": "^3.8.3"
   },
   "jest": {
     "transform": {
@@ -49,9 +57,16 @@
       "jsx",
       "json",
       "node"
+    ],
+    "moduleNameMapper": {
+      "^lodash-es$": "lodash"
+    },
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es)"
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash-es": "^4.17.15"
   }
 }
