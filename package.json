@@ -34,16 +34,16 @@
     "url": "https://github.com/PxyUp/uri-parse-lib.git"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.3",
-    "@types/lodash-es": "^4.17.3",
-    "jest": "^26.0.0",
-    "rollup": "^2.13.1",
-    "rollup-plugin-copy": "^3.3.0",
+    "@types/jest": "^27.0.2",
+    "@types/lodash-es": "^4.17.5",
+    "jest": "^27.2.4",
+    "rollup": "^2.57.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^6.1.0",
-    "rollup-plugin-typescript2": "^0.27.1",
-    "ts-jest": "^26.0.0",
-    "typescript": "^3.8.3"
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3"
   },
   "jest": {
     "transform": {
@@ -67,6 +67,6 @@
     ]
   },
   "dependencies": {
-    "lodash-es": "^4.17.15"
+    "lodash-es": "^4.17.21"
   }
 }
