@@ -11,6 +11,7 @@ Small library for parse URI(URL)
 # What the difference with new URL(url)?
 
 1. It is deeply parse search params like a object(check examples)
+2. Check first one!(it is main once)
 
 # Install
 
