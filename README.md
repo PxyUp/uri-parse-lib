@@ -10,38 +10,41 @@ Small library for parse URI(URL)
     
 # Usage   
     
-    import { parseURI } from "uri-parse-lib"
-    
-    var t = parseURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");
-    ```json
-    {
-      "hash": "#anchor",
-      "host": "example.com",
-      "origin": "http://example.com:8080",
-      "password": "pass",
-      "pathname": "/directory/file.ext",
-      "port": "8080",
-      "protocol": "http",
-      "query": {
-        "query": {
-          "nan": [
-            {
-              "nan": "1"
-            },
-            {
-              "sed": "4"
-            },
-            {
-              "sed": "4"
-            }
-          ]
+```typescript
+import { parseURI } from "uri-parse-lib"`
+
+parseURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");`
+```
+
+```json
+{
+  "hash": "#anchor",
+  "host": "example.com",
+  "origin": "http://example.com:8080",
+  "password": "pass",
+  "pathname": "/directory/file.ext",
+  "port": "8080",
+  "protocol": "http",
+  "query": {
+    "query": {
+      "nan": [
+        {
+          "nan": "1"
         },
-        "sed": {
-          "tatat": {
-            "rqwr": "5"
-          }
+        {
+          "sed": "4"
+        },
+        {
+          "sed": "4"
         }
-      },
-      "user": "user"
+      ]
+    },
+    "sed": {
+      "tatat": {
+        "rqwr": "5"
+      }
     }
-    ```
+  },
+  "user": "user"
+}
+```
