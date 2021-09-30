@@ -1,6 +1,6 @@
 # uri-parse-lib
 
-Small library for parse URI(URL)
+Small library for parse URI(URL) for web/node
 
 [![NPM](https://nodei.co/npm/uri-parse-lib.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/uri-parse-lib/)
 
