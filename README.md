@@ -4,6 +4,14 @@ Small library for parse URI(URL)
 
 [![NPM](https://nodei.co/npm/uri-parse-lib.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/uri-parse-lib/)
 
+# Try it
+
+[DEMO](https://pxyup.github.io/uri-parse-lib)
+
+# What the difference with new URL(url)?
+
+1. It is deeply parse search params like a object(check examples)
+
 # Install
 
     npm install uri-parse-lib
