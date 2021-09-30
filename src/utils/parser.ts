@@ -112,7 +112,7 @@ export function parsePort(urlObject: URL) {
 
 export function parseSearch(urlObject: URL) {
   if (urlObject.search.length) {
-    const answer = {}
+    const answer = Object.create(null)
     const arrayOfParam = urlObject.search.replace("?", "").split('&');
     arrayOfParam.forEach((param) => {
       const [key, value] = param.split("=")
@@ -139,13 +139,13 @@ function buildSearchParam(store: Object, param: string, value: any) {
   }
 
   let keys = param.replace("[]", "[$empty$]").split(/\[|\]/).filter((s) => s.length > 0);
-  let data = {}
+  let data = Object.create(null)
   let link = data
   while (keys.length) {
     let key = keys.shift()
     if (keys.length >= 1) {
       if (isEmptyKey(key)) {
-        throw new Error("error")
+        throw new Error("Suddenly you was use $empty$ like key")
       } else {
         if (data[key]) {
           data = data[key]
@@ -154,7 +154,7 @@ function buildSearchParam(store: Object, param: string, value: any) {
             if (data[parseInt(key)]) {
               data = data[parseInt(key)]
             } else {
-              data[parseInt(key)] = {}
+              data[parseInt(key)] = Object.create(null)
               data = data[parseInt(key)]
             }
           }
@@ -165,7 +165,7 @@ function buildSearchParam(store: Object, param: string, value: any) {
               }
             } else {
               if (!data[key]) {
-                data[key] = {}
+                data[key] = Object.create(null)
               }
             }
             data = data[key]
