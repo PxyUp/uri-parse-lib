@@ -12,7 +12,7 @@ Small library for parse URI(URL)
     
     import { parseURI } from "uri-parse-lib"
     
-    var t = parserURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");
+    var t = parseURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");
     /*
         hash: "anchor"
         host: "example.com"
