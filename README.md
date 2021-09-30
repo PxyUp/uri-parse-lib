@@ -13,7 +13,7 @@ Small library for parse URI(URL)
 ```typescript
 import { parseURI } from "uri-parse-lib"`
 
-parseURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");`
+parseURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[tatat][rqwr]=5&query[nan][2][sed]=4#anchor");`
 ```
 
 ```json
