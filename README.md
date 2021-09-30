@@ -13,27 +13,35 @@ Small library for parse URI(URL)
     import { parseURI } from "uri-parse-lib"
     
     var t = parseURI("http://user:pass@example.com:8080/directory/file.ext?query[nan][0][nan]=1&query[nan][1][sed]=4&sed[]=5&query[nan][2][sed]=4#anchor");
-    /*
-        hash: "anchor"
-        host: "example.com"
-        origin: "http://example.com:8080"
-        password: "pass"
-        pathname: "/directory/file.ext"
-        port: "8080"
-        protocol: "http"
-        query: {
-            nan: [
-              {
-                nan: '1',
-              }, {
-                sed: '4'
-              }, {
-                sed: '4'
-              }
-            ]
-          },
-          sed: ['5']
+    ```json
+    {
+      "hash": "#anchor",
+      "host": "example.com",
+      "origin": "http://example.com:8080",
+      "password": "pass",
+      "pathname": "/directory/file.ext",
+      "port": "8080",
+      "protocol": "http",
+      "query": {
+        "query": {
+          "nan": [
+            {
+              "nan": "1"
+            },
+            {
+              "sed": "4"
+            },
+            {
+              "sed": "4"
+            }
+          ]
+        },
+        "sed": {
+          "tatat": {
+            "rqwr": "5"
+          }
         }
-        user: "user"
-        
-    */
+      },
+      "user": "user"
+    }
+    ```
